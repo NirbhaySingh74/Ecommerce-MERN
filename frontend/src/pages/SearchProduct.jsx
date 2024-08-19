@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import VerticalCart from "../components/VerticalCart";
+const apiurl = import.meta.env.VITE_API_URL;
 
 const SearchProduct = () => {
   const location = useLocation();
@@ -11,7 +12,7 @@ const SearchProduct = () => {
 
   const search = async () => {
     try {
-      const res = await axios.get(`/api/search?q=${query}`);
+      const res = await axios.get(`${apiurl}/api/search?q=${query}`);
       console.log(res.data);
       setData(res.data.data);
       setLoading(false);

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const apiurl = import.meta.env.VITE_API_URL;
+
 const SignUp = () => {
   const initialUserState = {
     name: "",
@@ -60,10 +62,10 @@ const SignUp = () => {
     formData.append("profilePic", user.profilePicFile);
 
     try {
-      const res = await axios.post("/api/sign-up", formData);
+      const res = await axios.post(`${apiurl}/api/sign-up`, formData);
       toast.success("User signed up successfully", { position: "top-right" });
       setUser(initialUserState);
-      // console.log(res);
+      console.log(res);
       // setUserData(res.data);
       navigate("/login");
       // console.log(user);
