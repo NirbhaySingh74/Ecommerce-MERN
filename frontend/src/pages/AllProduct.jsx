@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import UploadProduct from "../components/UploadProduct";
 import ProductList from "../components/ProductList";
 import axios from "axios";
+const apiurl = import.meta.env.VITE_API_URL;
 
 const AllProduct = () => {
   const [openUploadProduct, setOpenUploadProduct] = useState(false);
@@ -10,7 +11,7 @@ const AllProduct = () => {
 
   const getProduct = async () => {
     try {
-      const res = await axios.get("/api/products");
+      const res = await axios.get(`${apiurl}/api/products`);
       setProducts(res.data);
     } catch (error) {
       console.error("Error fetching products:", error);

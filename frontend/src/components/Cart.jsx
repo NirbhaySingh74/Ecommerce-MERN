@@ -6,6 +6,7 @@ import Context from "../context";
 
 import { MdDelete } from "react-icons/md";
 import toast from "react-hot-toast";
+const apiurl = import.meta.env.VITE_API_URL;
 
 const Cart = () => {
   const [data, setData] = useState([]);
@@ -14,7 +15,7 @@ const Cart = () => {
   const loadingCart = new Array(4).fill(null);
 
   const fetchData = async () => {
-    const res = await axios.get("/api/view-cart-product");
+    const res = await axios.get(`${apiurl}/api/view-cart-product`);
 
     if (res.data.success) {
       setData(res.data.data);
@@ -34,7 +35,7 @@ const Cart = () => {
 
   const deleteProductCartHandler = async (id) => {
     try {
-      const res = await axios.delete("/api/delete-cart-product", {
+      const res = await axios.delete(`${apiurl}/api/delete-cart-product`, {
         data: { productId: id }, // Send productId in the request body
         withCredentials: true,
         headers: {
@@ -55,7 +56,7 @@ const Cart = () => {
   const increaseQty = async (id, qty) => {
     try {
       const response = await axios.post(
-        "/api/update-cart-product",
+        `${apiurl}/api/update-cart-product`,
         {
           _id: id,
           quantity: qty + 1,
@@ -82,7 +83,7 @@ const Cart = () => {
     if (qty >= 2) {
       try {
         const response = await axios.post(
-          "/api/update-cart-product",
+          `${apiurl}/api/update-cart-product`,
           {
             _id: id,
             quantity: qty - 1,

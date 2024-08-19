@@ -6,6 +6,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Context from "../context";
+const apiurl = import.meta.env.VITE_API_URL;
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,7 +35,7 @@ const Login = () => {
 
     setIsLoading(true);
     try {
-      const res = await axios.post("/api/login", data);
+      const res = await axios.post(`${apiurl}/api/login`, data);
 
       toast.success("User logged in successfully", { position: "top-center" });
       setIsLoading(false);

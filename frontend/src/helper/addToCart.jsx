@@ -1,11 +1,12 @@
 import axios from "axios";
 import toast from "react-hot-toast";
+const apiurl = import.meta.env.VITE_API_URL;
 
 export const addToCart = async (e, productId) => {
   e?.stopPropagation();
   e.preventDefault();
   try {
-    const res = await axios.post("/api/addtocart", { productId });
+    const res = await axios.post(`${apiurl}/api/addtocart`, { productId });
     // console.log(res.data);
     if (res.data.success) {
       toast.success(res.data.message, { position: "top-center" });

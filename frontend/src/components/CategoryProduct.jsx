@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import productCategory from "../helper/productCategory";
 import VerticalCart from "./VerticalCart";
+const apiurl = import.meta.env.VITE_API_URL;
 
 const CategoryProduct = () => {
   const location = useLocation();
@@ -25,7 +26,7 @@ const CategoryProduct = () => {
   }, [location.search]);
 
   const fetchData = async () => {
-    const res = await axios.post("/api/filter-product", {
+    const res = await axios.post(`${apiurl}/api/filter-product`, {
       category: filterCategory,
     });
     let sortedData = res?.data?.data || [];

@@ -11,6 +11,8 @@ import { setUserDetails } from "../store/userSlice";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../context";
+const apiurl = import.meta.env.VITE_API_URL;
+
 const Header = () => {
   const userData = useSelector((state) => state?.user?.user);
   const { cartProductCount } = useContext(Context);
@@ -24,7 +26,7 @@ const Header = () => {
   const [menuDisplay, setMenuDisplay] = useState(false);
 
   const handleLogout = async () => {
-    const fetchData = await axios.get("/api/logout");
+    const fetchData = await axios.get(`${apiurl}/api/logout`);
 
     console.log(fetchData);
     // console.log("logout get called");

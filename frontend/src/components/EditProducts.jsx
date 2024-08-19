@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import productCategory from "../helper/productCategory";
 import { IoIosCloseCircle } from "react-icons/io";
 import toast from "react-hot-toast";
+const apiurl = import.meta.env.VITE_API_URL;
+
 const EditProducts = ({ product, onClose, onProductUploaded }) => {
   const [productDetails, setProductDetails] = useState({
     productName: product.productName || "",
@@ -93,7 +95,7 @@ const EditProducts = ({ product, onClose, onProductUploaded }) => {
     console.log(product._id);
     try {
       const response = await axios.put(
-        `/api/products/${product._id}`,
+        `${apiurl}/api/products/${product._id}`,
         productData
       );
       console.log(response.data);

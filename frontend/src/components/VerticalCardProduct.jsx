@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import { addToCart } from "../helper/addToCart";
 import Context from "../context";
+const apiurl = import.meta.env.VITE_API_URL;
+
 const VerticalCardProduct = ({ categoryName, heading }) => {
   const { fetchUserCart } = useContext(Context);
   const [data, setData] = useState([]);
@@ -21,7 +23,7 @@ const VerticalCardProduct = ({ categoryName, heading }) => {
   };
   const fetchData = async () => {
     setLoading(true);
-    const res = await axios.get(`/api/category/${categoryName}`);
+    const res = await axios.get(`${apiurl}/api/category/${categoryName}`);
     setLoading(false);
 
     setData(res?.data?.data);

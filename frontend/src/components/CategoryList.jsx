@@ -6,10 +6,11 @@ const CategoryList = () => {
   const [categoryProduct, setCategoryProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const categoryLoading = new Array(13).fill(null);
+  const apiurl = import.meta.env.VITE_API_URL;
 
   const fetchCategoryProduct = async () => {
     try {
-      const res = await axios.get("/api/get-categoryProduct/");
+      const res = await axios.get(`${apiurl}/api/get-categoryProduct/`);
       setCategoryProduct(res.data.data);
     } catch (error) {
       console.error("Error fetching category products", error);

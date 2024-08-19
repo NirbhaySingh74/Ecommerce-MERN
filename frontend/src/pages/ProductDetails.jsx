@@ -6,6 +6,8 @@ import RecommendedProduct from "../components/RecommendedProduct";
 import { addToCart } from "../helper/addToCart";
 import Context from "../context";
 import { useNavigate } from "react-router-dom";
+const apiurl = import.meta.env.VITE_API_URL;
+
 const ProductDetails = () => {
   const [data, setData] = useState();
   const { id } = useParams();
@@ -22,7 +24,7 @@ const ProductDetails = () => {
 
   const fetchProductDetails = async () => {
     setLoading(true);
-    const res = await axios.get(`/api/product/${id}`);
+    const res = await axios.get(`${apiurl}/api/product/${id}`);
     setLoading(false);
     setData(res?.data?.data);
     setActiveImage(res?.data?.data?.images[0]);

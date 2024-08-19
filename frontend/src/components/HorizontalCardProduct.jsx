@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { addToCart } from "../helper/addToCart";
 import PropTypes from "prop-types";
+const apiurl = import.meta.env.VITE_API_URL;
 
 import Context from "../context";
 const HorizontalCardProduct = ({ categoryName, heading }) => {
@@ -22,7 +23,7 @@ const HorizontalCardProduct = ({ categoryName, heading }) => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`/api/category/${categoryName}`);
+      const res = await axios.get(`${apiurl}/api/category/${categoryName}`);
       console.log("res", res);
       setData(res.data.data);
     } catch (error) {

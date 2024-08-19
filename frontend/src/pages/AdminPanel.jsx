@@ -4,6 +4,8 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+const apiurl = import.meta.env.VITE_API_URL;
+
 const AdminPanel = () => {
   const user = useSelector((state) => state?.user?.user);
   const [allUser, setAllUser] = useState([]);
@@ -14,7 +16,7 @@ const AdminPanel = () => {
 
   const getAllUser = async () => {
     try {
-      const res = await axios.get("/api/allusers/");
+      const res = await axios.get(`${apiurl}/api/allusers/`);
       setAllUser(res.data);
     } catch (error) {
       console.log(error);
@@ -28,7 +30,7 @@ const AdminPanel = () => {
 
   const saveHandler = async (userId) => {
     try {
-      await axios.put(`/api/users/${userId}`, { role: selectedRole });
+      await axios.put(`${apiurl}/api/users/${userId}`, { role: selectedRole });
       setEditingUserId(null);
       await getAllUser();
       toast.success("User updated!", { position: "top-center" });

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { addToCart } from "../helper/addToCart";
+const apiurl = import.meta.env.VITE_API_URL;
+
 const RecommendedProduct = ({ categoryName, heading, currentProduct }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,7 +13,7 @@ const RecommendedProduct = ({ categoryName, heading, currentProduct }) => {
   const { fetchUserCart } = useContext(Context);
   const fetchData = async () => {
     setLoading(true);
-    const res = await axios.get(`/api/category/${categoryName}`);
+    const res = await axios.get(`${apiurl}/api/category/${categoryName}`);
     setLoading(false);
 
     setData(res?.data?.data);
