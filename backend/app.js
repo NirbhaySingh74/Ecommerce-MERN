@@ -3,9 +3,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import router from "./routes/routes.js";
+import router from "./src/routes/routes.js";
 import cookieParser from "cookie-parser";
 const app = express();
+dotenv.config();
 app.use(
   cors({
     origin: "*",
@@ -15,7 +16,6 @@ app.use(
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-dotenv.config();
 
 const PORT = process.env.PORT || 8000;
 
