@@ -102,7 +102,7 @@ const EditProducts = ({ product, onClose, onProductUploaded }) => {
       toast.success(response?.data?.message, { position: "top-right" });
       onProductUploaded();
       onClose();
-      console.log("get called");
+      // console.log("get called");
     } catch (error) {
       console.error("Error updating product:", error);
       const errorMessage =

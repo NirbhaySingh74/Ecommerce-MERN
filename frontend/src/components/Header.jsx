@@ -28,7 +28,7 @@ const Header = () => {
   const handleLogout = async () => {
     const fetchData = await axios.get(`${apiurl}/api/logout`);
 
-    console.log(fetchData);
+    // console.log(fetchData);
     // console.log("logout get called");
     if (fetchData.data.success) {
       toast.success(fetchData.data.message, { position: "top-right" });

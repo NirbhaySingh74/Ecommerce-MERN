@@ -32,7 +32,7 @@ const UploadProduct = ({ onClose, onProductUploaded }) => {
         "https://api.cloudinary.com/v1_1/dnwgwq672/image/upload",
         formData
       );
-      console.log(res);
+      // console.log(res);
       return res.data.secure_url;
     } catch (error) {
       console.error(

@@ -35,11 +35,12 @@ const Login = () => {
 
     setIsLoading(true);
     try {
+      // eslint-disable-next-line no-unused-vars
       const res = await axios.post(`${apiurl}/api/login`, data);
 
       toast.success("User logged in successfully", { position: "top-center" });
       setIsLoading(false);
-      console.log(res.data);
+      // console.log("Login ", res.data);
       navigate("/");
       fetchUserDetails();
       fetchUserCart();
